@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import React from 'react';
 import "./App.css";
+import NewExpense from "./components/NewExpense/NewExpense";
+
 import DisplayExpense from "./components/Expenses/DisplayExpense";
 
 function App() {
@@ -56,10 +58,8 @@ function App() {
   ];
   return (
     <div>
-      <h2>Let's get started</h2>
-      <p>This is also visible!</p>
+      <NewExpense />
       <DisplayExpense items={expenses}  />
-      
     </div>
   );
 }
