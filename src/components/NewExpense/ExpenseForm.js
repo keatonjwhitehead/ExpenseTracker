@@ -14,7 +14,7 @@ const ExpenseForm = () => {
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
         // setUserInput({
         //     ...userInput, // This copies the previous state of information the other object data is not overwritten
         //     enteredTitle: event.target.value, // this overrides just the previous element that was changed from the new retrieved input
@@ -26,7 +26,7 @@ const ExpenseForm = () => {
     };
     const amountChangeHandler = (event) => {
         setEnteredAmount(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
         // setUserInput({
         //     ...userInput,
         //     enteredAmount: event.target.value,
@@ -34,14 +34,29 @@ const ExpenseForm = () => {
     };
     const dateChangeHandler = (event) => {
         setEnteredDate(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
         // setUserInput({
         //     ...userInput,
         //     enteredDate: event.target.value,
         // })
     };
+
+    //When you submit a form the html normally restarts the page because it sends the information to the hosting server, we don't
+    //want this. We wan to keep it internal and send it to be manipulated with Javascript.
+    const submitHandler = (event) => {
+        event.preventDefault();
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
+        };
+
+        console.log(expenseData);
+    };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label> Title</label>
