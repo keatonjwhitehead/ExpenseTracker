@@ -3,38 +3,42 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
 
-    // const [enteredTitle, setEnteredTitle] = useState('');
-    // const [enteredAmount, setEnteredAmount] = useState('');
-    // const [enteredDate, setEnteredDate] = useState('');
-    const [userInput, setUserInput] = useState({
-        enteredTitle: '',
-        enteredAmount: '',
-        enteredDate: '',
-    });
+    const [enteredTitle, setEnteredTitle] = useState('');
+    const [enteredAmount, setEnteredAmount] = useState('');
+    const [enteredDate, setEnteredDate] = useState('');
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: '',
+    //     enteredAmount: '',
+    //     enteredDate: '',
+    // });
 
     const titleChangeHandler = (event) => {
-        // setEnteredTitle(event.target.value);
-        // console.log(event.target.value);
-        setUserInput({
-            ...userInput, // This copies the previous state of information the other object data is not overwritten
-            enteredTitle: event.target.value // this overrides just the previous element that was changed from the new retrieved input
-        })
+        setEnteredTitle(event.target.value);
+        console.log(event.target.value);
+        // setUserInput({
+        //     ...userInput, // This copies the previous state of information the other object data is not overwritten
+        //     enteredTitle: event.target.value, // this overrides just the previous element that was changed from the new retrieved input
+        // })
+        // If your current state depends on the previous state it is better to use the fucntion below:
+        // setUserInput((prevState) => {
+        //     return {...prevState,enteredTitle: event.target.value};
+        // });
     };
     const amountChangeHandler = (event) => {
-        // setEnteredAmount(event.target.value);
-        // console.log(event.target.value);
-        setUserInput({
-            ...userInput,
-            enteredAmount: event.target.value
-        })
+        setEnteredAmount(event.target.value);
+        console.log(event.target.value);
+        // setUserInput({
+        //     ...userInput,
+        //     enteredAmount: event.target.value,
+        // })
     };
     const dateChangeHandler = (event) => {
-        // setEnteredDate(event.target.value);
-        // console.log(event.target.value);
-        setUserInput({
-            ...userInput,
-            enteredDate: event.target.value
-        })
+        setEnteredDate(event.target.value);
+        console.log(event.target.value);
+        // setUserInput({
+        //     ...userInput,
+        //     enteredDate: event.target.value,
+        // })
     };
   return (
     <form>
