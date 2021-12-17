@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ExpenseItem from "./ExpenseItem";
 import Card from '../UI/Card';
-import "./DisplayExpense.css";
-function DisplayExpense(props) {
+import "./Expenses.css";
+import ExpenseFilter from "./ExpensesFilter";
+
+function Expenses(props) {
+
+
+    //Creating an intial state to listen to the year selected from the user from the drop down menu. 
+    //Value gets stored in the enteredYear and the function setEnteredYear is called
+    const [enteredYear, setEnteredYear] = useState('2022');
+    const filterYearSelected = selectedYear => {
+      setEnteredYear(selectedYear);
+      console.log(selectedYear);
+    }
+
   return (
     <Card className="expenses">
+      <ExpenseFilter selected={enteredYear} onUpdatedYear = {filterYearSelected} />
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
@@ -48,4 +61,4 @@ function DisplayExpense(props) {
     </Card>
   );
 }
-export default DisplayExpense;
+export default Expenses;

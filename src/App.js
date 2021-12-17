@@ -2,8 +2,7 @@ import logo from "./logo.svg";
 import React from 'react';
 import "./App.css";
 import NewExpense from "./components/NewExpense/NewExpense";
-
-import DisplayExpense from "./components/Expenses/DisplayExpense";
+import Expenses from "./components/Expenses/Expenses";
 
 function App() {
   const expenses = [
@@ -61,10 +60,15 @@ function App() {
     console.log('In App.js');
     console.log(expense);
   }
+  const updateExpenseHandler = expense => {
+    console.log('updated expenses');
+    console.log(expense);
+  }
   return (
     <div>
+      
       <NewExpense onAddExpense={addExpenseHandler} />
-      <DisplayExpense items={expenses}  />
+      <Expenses items={expenses}  />
     </div>
   );
 }
