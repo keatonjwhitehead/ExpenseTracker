@@ -1,67 +1,57 @@
-import logo from "./logo.svg";
-import React from 'react';
-import "./App.css";
-import DisplayExpense from "./components/Expenses/DisplayExpense";
+import React, { useState } from 'react';
 
-function App() {
-  const expenses = [
-    {
-      id: "e1",
-      title: "Google G Suite",
-      amount: 54.0,
-      date: new Date(2021, 11, 2),
-    },
-    {
-      id: "e2",
-      title: "Google Voice",
-      amount: 14.79,
-      date: new Date(2021, 11, 2),
-    },
-    {
-      id: "e3",
-      title: "QuickBooks",
-      amount: 33.0,
-      date: new Date(2021, 11, 16),
-    },
-    {
-      id: "e4",
-      title: "Pinnacol Assurance",
-      amount: 500.0,
-      date: new Date(2021, 11, 1),
-    },
-    {
-      id: "e5",
-      title: "Namecheap",
-      amount: 9.66,
-      date: new Date(2021, 11, 7),
-    },
-    {
-      id: "e6",
-      title: "Next Insurance",
-      amount: 121.25,
-      date: new Date(2021, 11, 29),
-    },
-    {
-      id: "e7",
-      title: "Capital One CC",
-      amount: 100.0,
-      date: new Date(2021, 11, 14),
-    },
-    {
-      id: "e8",
-      title: "Genesis CC",
-      amount: 100.0,
-      date: new Date(2021, 11, 15),
-    },
-  ];
+import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
+import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
+import './App.css';
+
+const App = () => {
+  const [courseGoals, setCourseGoals] = useState([
+    { text: 'Do all exercises!', id: 'g1' },
+    { text: 'Finish the course!', id: 'g2' }
+  ]);
+
+  const addGoalHandler = enteredText => {
+    setCourseGoals(prevGoals => {
+      const updatedGoals = [...prevGoals];
+      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
+      return updatedGoals;
+    });
+  };
+
+  const deleteItemHandler = goalId => {
+    setCourseGoals(prevGoals => {
+      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
+      return updatedGoals;
+    });
+  };
+
+  let content = (
+    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+  );
+
+  if (courseGoals.length > 0) {
+    content = (
+      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
+    );
+  }
+
   return (
     <div>
-      <h2>Let's get started</h2>
-      <p>This is also visible!</p>
-      <DisplayExpense items={expenses}  />
-      
+      <section id="goal-form">
+        <CourseInput onAddGoal={addGoalHandler} />
+      </section>
+      <section id="goals">
+        {content}
+        {/* {courseGoals.length > 0 && (
+          <CourseGoalList
+            items={courseGoals}
+            onDeleteItem={deleteItemHandler}
+          />
+        ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+        } */}
+      </section>
     </div>
   );
-}
+};
 
 export default App;
