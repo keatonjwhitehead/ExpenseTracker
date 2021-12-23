@@ -55,6 +55,13 @@ const DUMMY_EXPENSES = [
 ];
 
 const App = () => {
+  const [columns, setColumns] = useState([]);
+  const [data, setData] = useState([]);
+ 
+  // handle file upload
+  const handleFileUpload = e => {
+ 
+  };
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   const addExpenseHandler = (expense) => {
@@ -72,6 +79,7 @@ const App = () => {
 
   return (
     <div>
+
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
