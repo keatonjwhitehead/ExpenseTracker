@@ -51,6 +51,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### Packages that need to be installed:
 
 react-dropzone: npm install --save react-dropzone
+papaparse: npm install papaparse
 
 ### Code Splitting
 

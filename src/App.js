@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
+import Dropzone from './components/NewExpense/Dropzone';
 
 const DUMMY_EXPENSES = [
   {
@@ -82,6 +83,7 @@ const App = () => {
 
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
+      <Dropzone />
     </div>
   );
 };

@@ -1,0 +1,44 @@
+.border-green-600 {
+    border-color: aquamarine;
+    background-color: lightgreen;
+}
+
+.bg-green-100{
+    border-color: cadetblue;
+}
+
+.border-gray-600{
+    border-color:black;;
+}
+
+.border-dropzone{
+
+    /* background-color: grey; */
+    border-width: 1px;
+    border-style: dashed;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  div.scroll {
+    width: 70%;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+    margin:auto;
+  }
