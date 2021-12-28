@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import ExpenseForm from './ExpenseForm';
+import Dropzone from "./Dropzone";
 import './NewExpense.css';
 
 
@@ -15,7 +16,9 @@ const NewExpense = (props) => {
     props.onAddExpense(expenseData);
     setIsEditing(false);
   };
-
+  const passUploader = (data) => {
+    props.onExpenseUpload(data);
+  }
   const startEditingHandler = () => {
     setIsEditing(true);
   };
@@ -35,6 +38,7 @@ const NewExpense = (props) => {
           onSaveExpenseData={saveExpenseDataHandler}
           onCancel={stopEditingHandler}
         />
+        <Dropzone onExpenseUpload_2={passUploader} />
         </div>
       )}
     </div>

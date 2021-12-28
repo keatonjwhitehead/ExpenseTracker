@@ -5,8 +5,15 @@ import { parse } from "papaparse";
 const Dropzone = (props) => {
   const [highlighted, setHighlighted] = React.useState(false);
   const [uploadedData, setUploadData] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
+  const changeLoadingDisplay= (val) => {
+    setIsLoading(val);
+    console.log("Changed value to:" + val);
+  }
   const uploadFileHandler = (e) => {
+    changeLoadingDisplay(true);
+    console.log("true");
     e.preventDefault();
     setHighlighted(false);
     Array.from(e.dataTransfer.files)
@@ -24,17 +31,28 @@ const Dropzone = (props) => {
           item.amount = Number(item.amount);
           
         });
-        props.onExpenseUpload(result.data);
-        // result.data.forEach((item) => props.onExpenseUpload(item));
+        delete result.data.splice(-1);
+        props.onExpenseUpload_2(result.data);
+
       });
+      console.log("false");
+      changeLoadingDisplay(false);
   };
 
   return (
     <div>
       <h1> Contatct Import</h1>
-      <div
-        className={`border-dropzone ${
-          highlighted ? "border-green-600 bg-green-100" : "border-gray-600"
+      
+      {isLoading && (
+        <img 
+        source={{src: '../../assets/files/loading.gif'}}  
+        className="loader"
+    />
+      )}
+      {!isLoading && (
+        <div
+        className={`border-dropzone card ${
+          highlighted ? "border-green bg-green" : "border-gray"
         }`}
         onDragEnter={() => {
           setHighlighted(true);
@@ -47,44 +65,10 @@ const Dropzone = (props) => {
         }}
         onDrop={uploadFileHandler}
       >
-        DROP HERE
-      </div>
-
-      {/* <ul>
-        {uploadedData.map((data) => (
-          <li key={data.email}>
-            <strong>{data.Amount}</strong>: {data.Description}
-          </li>
-        ))}
-      </ul> */}
-      <h2>Uploaded Expenses</h2>
-      <div className="scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>Amount</th>
-              <th>Balance</th>
-              <th>Description</th>
-              <th>Details</th>
-              <th>Posting Date</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-            <tbody>
-          {uploadedData.map((data) => (
-            <tr>
-              <td>{data.amount}</td>
-              <td>{data.balance}</td>
-              <td>{data.description}</td>
-              <td>{data.details}</td>
-              <td>{data.date.toString()}</td>
-              <td>{data.type}</td>
-            </tr>
-            
-          ))}
-          </tbody>
-        </table>
-      </div>
+         DROP HERE
+         </div>
+      )}
+       
     </div>
   );
 };

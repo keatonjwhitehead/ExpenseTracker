@@ -1,0 +1,21 @@
+a:link {
+    color: red;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: #3498db;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: hotpink;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+  }
+.link-style {
+    text-align: center;
+}

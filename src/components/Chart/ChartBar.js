@@ -4,14 +4,20 @@ import './ChartBar.css';
 
 const ChartBar = (props) => {
   let barFillHeight = '0%';
-
-  if (props.maxValue > 0) {
-    barFillHeight = Math.round((props.value / props.maxValue) * 100) + '%';
-    console.log("Amount: "+ props.value);
-    console.log("Maximum: " + props.maxValue);
-    console.log(props.amount / props.maxValue);
-    console.log("barheight: " + barFillHeight);
+  let barMaxHeight = Math.max(props.maxValue, Math.abs(props.minValue));
+  const barColorHandler = (val) => {
+    val = val*-1;
+    if (val < 0){
+      barFillHeight = Math.round((props.value / barMaxHeight) * 100) + '%';
+      return 'chart-bar__fill';
+      
+    }
+    else {
+      barFillHeight = Math.round((Math.abs(props.value) / barMaxHeight) * 100) + '%';
+      return 'chart-bar__fill-negative';
+    }
   }
+  
   
 
   return (
@@ -19,7 +25,7 @@ const ChartBar = (props) => {
     <div className='chart-bar'>
       <div className='chart-bar__inner'>
         <div
-          className='chart-bar__fill'
+          className={barColorHandler(props.value)}
           style={{ height: barFillHeight }}
         ></div>
       </div>

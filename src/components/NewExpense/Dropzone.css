@@ -1,38 +1,28 @@
-.border-green-600 {
-    border-color: aquamarine;
-    background-color: lightgreen;
-}
-
-.bg-green-100{
-    border-color: cadetblue;
-}
-
-.border-gray-600{
-    border-color:black;;
-}
 
 .border-dropzone{
 
     /* background-color: grey; */
     border-width: 1px;
     border-style: dashed;
+    width: 70%;
+    height: 20px;
+    padding: 30px;
+    margin:auto;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
 }
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0%  { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
   div.scroll {
     width: 70%;
     height: 150px;
@@ -41,4 +31,13 @@ table {
     text-align: center;
     padding: 20px;
     margin:auto;
+  }
+  .border-green{
+    border-color: rgb(14, 131, 20);
+  }
+  .bg-green{
+    background-color: rgb(84, 235, 84);
+  }
+  .border-gray{
+    border-color: gray;
   }

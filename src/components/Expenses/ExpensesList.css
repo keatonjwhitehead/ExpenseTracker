@@ -7,3 +7,12 @@
     color: white;
     text-align: center;
   }
+
+  .list-scroll {
+    width: 95%;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    margin:20px;
+  }
