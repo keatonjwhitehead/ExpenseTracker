@@ -17,8 +17,15 @@ const Dropzone = (props) => {
       .forEach(async (file) => {
         const text = await file.text();
         const result = parse(text, { header: true });
-        console.log(result);
         setUploadData((existing) => [...existing, ...result.data]);
+        result.data.forEach((item) => {
+          const dateHolder = new Date(item.date);
+          item.date = dateHolder;
+          item.amount = Number(item.amount);
+          
+        });
+        props.onExpenseUpload(result.data);
+        // result.data.forEach((item) => props.onExpenseUpload(item));
       });
   };
 
@@ -51,29 +58,32 @@ const Dropzone = (props) => {
         ))}
       </ul> */}
       <h2>Uploaded Expenses</h2>
-      {console.log(uploadedData)};
       <div className="scroll">
-      <table>
-        <tr>
-          <th>Amount</th>
-          <th>Balance</th>
-          <th>Description</th>
-          <th>Details</th>
-          <th>Posting Date</th>
-          <th>Type</th>
-        </tr>
-        {uploadedData.map((data) => (
+        <table>
+          <thead>
             <tr>
-                <td>{data.Amount}</td>
-                <td>{data.Balance}</td>
-                <td>{data.Description}</td>
-                <td>{data.Details}</td>
-                <td>{data["Posting Date"]}</td>
-                <td>{data.Type}</td>
+              <th>Amount</th>
+              <th>Balance</th>
+              <th>Description</th>
+              <th>Details</th>
+              <th>Posting Date</th>
+              <th>Type</th>
             </tr>
-        ))}        
-      </table>
-      
+          </thead>
+            <tbody>
+          {uploadedData.map((data) => (
+            <tr>
+              <td>{data.amount}</td>
+              <td>{data.balance}</td>
+              <td>{data.description}</td>
+              <td>{data.details}</td>
+              <td>{data.date.toString()}</td>
+              <td>{data.type}</td>
+            </tr>
+            
+          ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

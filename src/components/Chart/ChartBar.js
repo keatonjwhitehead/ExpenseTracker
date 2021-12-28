@@ -7,9 +7,15 @@ const ChartBar = (props) => {
 
   if (props.maxValue > 0) {
     barFillHeight = Math.round((props.value / props.maxValue) * 100) + '%';
+    console.log("Amount: "+ props.value);
+    console.log("Maximum: " + props.maxValue);
+    console.log(props.amount / props.maxValue);
+    console.log("barheight: " + barFillHeight);
   }
+  
 
   return (
+    <div>
     <div className='chart-bar'>
       <div className='chart-bar__inner'>
         <div
@@ -18,6 +24,7 @@ const ChartBar = (props) => {
         ></div>
       </div>
       <div className='chart-bar__label'>{props.label}</div>
+    </div>
     </div>
   );
 };
