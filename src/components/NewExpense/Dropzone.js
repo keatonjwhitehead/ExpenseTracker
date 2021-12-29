@@ -56,7 +56,7 @@ const Dropzone = (props) => {
 
   return (
     <div>
-      <h1> Contatct Import</h1>
+      <h1>Bank Transaction CSV Import</h1>
         {isLoading && (
 
        <div> <img
