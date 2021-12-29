@@ -31,40 +31,15 @@ const App = () => {
     });
   };
   let count = 0;
-  const addExpenseUploadHandler = (expenses) => {
-    // setExpenses((prevExpenses) => {
-      // return [expenses, ...prevExpenses];
-      
-    // }
-    console.log("Need to load!" );
-    expenses.forEach((expense) => {
-      const newExpense = {
-        id: count,
-        title: expense.description + "...",
-        details: expense.details,
-        date: expense.date,
-        description: expense.description,
-        amount: expense.amount,
-        type: expense.type,
-        balance: expense.balance,
-        checkNum: expense.checkNum
-        
-      }
-      addExpenseHandler(newExpense);
-      count++;
-      console.log("adding...")
-    })
-    console.log("Finish Loading!" );
-    
-  };
+
 
 
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} onExpenseUpload={addExpenseUploadHandler}/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses} />
-      <DownloadData />
+      <DownloadData  />
       
       
     </div>

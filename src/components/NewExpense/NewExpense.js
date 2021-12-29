@@ -19,6 +19,9 @@ const NewExpense = (props) => {
   const passUploader = (data) => {
     props.onExpenseUpload(data);
   }
+  const passAddExpense = (data) => {
+    props.onAddExpense(data);
+  }
   const startEditingHandler = () => {
     setIsEditing(true);
   };
@@ -38,7 +41,7 @@ const NewExpense = (props) => {
           onSaveExpenseData={saveExpenseDataHandler}
           onCancel={stopEditingHandler}
         />
-        <Dropzone onExpenseUpload_2={passUploader} />
+        <Dropzone onAddExpense_2 = {passAddExpense} />
         </div>
       )}
     </div>
