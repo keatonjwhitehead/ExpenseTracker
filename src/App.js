@@ -10,11 +10,11 @@ const DUMMY_EXPENSES = [
   {
     
     id: "e1",
-    title: "",
+    title: "Download the dataset below to see it propergated here!",
     details: "",
     date: storeDate,
     description: "",
-    amount: "",
+    amount: 99.99,
     type: "",
     balance: "",
     checkNum: ""
