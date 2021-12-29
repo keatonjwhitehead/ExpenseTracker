@@ -19,12 +19,22 @@ const NewExpense = (props) => {
   const passUploader = (data) => {
     props.onExpenseUpload(data);
   }
+  const passAddExpense = (data) => {
+    props.onAddExpense(data);
+  }
+  const onLoadHandler = (data) => {
+    props.onLoad(data);
+  }
   const startEditingHandler = () => {
     setIsEditing(true);
   };
 
   const stopEditingHandler = () => {
     setIsEditing(false);
+  };
+  const onLoadCheckHandler = () => {
+    let check = props.onLoadCheck();
+    return check;
   };
 
   return (
@@ -38,7 +48,7 @@ const NewExpense = (props) => {
           onSaveExpenseData={saveExpenseDataHandler}
           onCancel={stopEditingHandler}
         />
-        <Dropzone onExpenseUpload_2={passUploader} />
+        <Dropzone onAddExpense_2 = {passAddExpense} onLoadPasser={onLoadHandler} onLoadCheck2={onLoadCheckHandler}/>
         </div>
       )}
     </div>
