@@ -5,6 +5,7 @@ import Expenses from "./components/Expenses/Expenses";
 import DownloadData from './components/DownloadData';
 
 const storeDate = new Date();
+
 const DUMMY_EXPENSES = [
   {
     
@@ -24,6 +25,16 @@ const App = () => {
 
   // handle file upload
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [isLoading, setIsLoading] = React.useState(false);
+  
+  const getLoadingDisplay = () => {
+
+    return isLoading;
+  }
+
+  const setLoadingDisplay = (val) => {
+    setIsLoading(val);
+  };
 
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
@@ -37,7 +48,7 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler}/>
+      <NewExpense onAddExpense={addExpenseHandler} onLoad={setLoadingDisplay} onLoadCheck={getLoadingDisplay}/>
       <Expenses items={expenses} />
       <DownloadData  />
       
