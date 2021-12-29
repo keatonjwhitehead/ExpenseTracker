@@ -42,13 +42,13 @@ const Dropzone = (props) => {
           // setText("Adding item to database");
           props.onAddExpense_2(item);
           count++;
-         
+          setIsLoading(false);
         });
         console.log("--Deleteig last item");
         delete result.data.splice(-1);
         console.log("--Finished uploading");
         // setText("Finishing upload...");
-        setIsLoading(false);
+        
       });
       
       
