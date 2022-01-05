@@ -9,15 +9,16 @@ const storeDate = new Date();
 const DUMMY_EXPENSES = [
   {
     
-    id: "e1",
+    id: "example",
     title: "Download the dataset below to see it propergated here!",
     details: "",
     date: storeDate,
     description: "",
-    amount: 99.99,
+    amount: 0,
     type: "",
     balance: "",
-    checkNum: ""
+    checkNum: "",
+    key:"example"
   }
 ];
 
@@ -28,8 +29,11 @@ const App = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   
   const getLoadingDisplay = () => {
-
     return isLoading;
+  }
+
+  const getExpensesHandler =() => {
+    return expenses;
   }
 
   const setLoadingDisplay = (val) => {
@@ -38,7 +42,20 @@ const App = () => {
 
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
+      return [...prevExpenses, expense];
+    });
+  };
+
+  const addExpensesHandler = (expensesImport) => {
+    setExpenses((prevExpenses) => {
+      return [...expensesImport, ...prevExpenses];
+    });
+  };
+
+  const deleteItemHandler = (expenseId) => {
+    setExpenses((prevExpeneses) => {
+      const updatedExpense = prevExpeneses.filter((expense) => expense.id !== expenseId);
+      return updatedExpense;
     });
   };
   let count = 0;
@@ -48,8 +65,8 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} onLoad={setLoadingDisplay} onLoadCheck={getLoadingDisplay}/>
-      <Expenses items={expenses} />
+      <NewExpense onAddExpense={addExpenseHandler} onAddMultExpenses={addExpensesHandler} onLoad={setLoadingDisplay} onLoadCheck={getLoadingDisplay} onNewExpense={deleteItemHandler}/>
+      <Expenses items={expenses} c={getExpensesHandler} />
       <DownloadData  />
       
       

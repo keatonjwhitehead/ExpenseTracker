@@ -5,7 +5,7 @@
     border-width: 1px;
     border-style: dashed;
     width: 70%;
-    height: 20px;
+    height: auto;
     padding: 30px;
     margin:auto;
     justify-content: center; /* align horizontal */
@@ -40,4 +40,7 @@
   }
   .border-gray{
     border-color: gray;
+  }
+  .error{
+    color:#b9262d;
   }

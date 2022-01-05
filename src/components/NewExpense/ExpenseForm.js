@@ -32,6 +32,7 @@ const ExpenseForm = (props) => {
   };
 
   const dateChangeHandler = (event) => {
+    console.log(event.target.value);
     setEnteredDate(event.target.value);
     // setUserInput({
     //   ...userInput,
@@ -47,6 +48,7 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
+    console.log(expenseData.date);
 
     props.onSaveExpenseData(expenseData);
     setEnteredTitle('');

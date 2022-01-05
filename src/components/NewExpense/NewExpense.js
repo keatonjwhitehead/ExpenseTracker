@@ -28,6 +28,9 @@ const NewExpense = (props) => {
   const startEditingHandler = () => {
     setIsEditing(true);
   };
+  const onNewExpenseHanlder = (expenseId) => {
+    props.onNewExpense(expenseId);
+}
 
   const stopEditingHandler = () => {
     setIsEditing(false);
@@ -36,6 +39,9 @@ const NewExpense = (props) => {
     let check = props.onLoadCheck();
     return check;
   };
+  const passDataHandler = (data) => {
+    props.onAddMultExpenses(data);
+  }
 
   return (
     <div className='new-expense'>
@@ -48,7 +54,7 @@ const NewExpense = (props) => {
           onSaveExpenseData={saveExpenseDataHandler}
           onCancel={stopEditingHandler}
         />
-        <Dropzone onAddExpense_2 = {passAddExpense} onLoadPasser={onLoadHandler} onLoadCheck2={onLoadCheckHandler}/>
+        <Dropzone onAddExpense_2 = {passAddExpense} onAddExpenses={passDataHandler} onLoadPasser={onLoadHandler} onLoadCheck2={onLoadCheckHandler} onRemoveExample={onNewExpenseHanlder}/>
         </div>
       )}
     </div>
